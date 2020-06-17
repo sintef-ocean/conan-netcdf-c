@@ -1,6 +1,6 @@
 #include <iostream>
-#include "hello.h"
+#include "netcdf.h"
 
 int main() {
-    hello();
+    nc_inq_libvers();
 }
