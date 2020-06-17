@@ -4,11 +4,11 @@ from conans import ConanFile, CMake, tools
 class NetcdfConan(ConanFile):
     name = "netcdf"
     version = "4.3.2-rc2-1921dc6687a5eea13936718d5a7aeb9bd04abf0b"
-    license = "<Put the package license here>"
+    license = "NetCDF"
     author = "Jarle Ladstein jarle.ladstein@sintef.no"
     url = "https://github.com/Unidata/netcdf-c.git"
-    description = "<Description of Netcdf here>"
-    topics = ("<Put some tag here>", "<here>", "<and here>")
+    description = "NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. NetCDF was developed and is maintained at Unidata. Unidata provides data and software tools for use in geoscience education and research. Unidata is part of the University Corporation for Atmospheric Research (UCAR) Community Programs (UCP). Unidata is funded primarily by the National Science Foundation."
+    #topics = ("<Put some tag here>", "<here>", "<and here>")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     source_subfolder = "netcdf-c"
@@ -57,6 +57,7 @@ class NetcdfConan(ConanFile):
     def package(self):
         cmake = self._configure_cmake()
         cmake.install()
+        self.copy("COPYRIGHT", dst="licenses", src=self.source_subfolder, keep_path=False)
         #self.copy("*.h", dst="include", src="hello")
         #self.copy("*hello.lib", dst="lib", keep_path=False)
         #self.copy("*.dll", dst="bin", keep_path=False)
