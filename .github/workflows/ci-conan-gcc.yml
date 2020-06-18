@@ -1,10 +1,7 @@
 name: GCC Conan
 
 # This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches:
-      - test
+on: push
 
 env:
   SINTEF_REFERENCE: "netcdf*"
