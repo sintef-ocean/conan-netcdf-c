@@ -1,10 +1,7 @@
 name: GCC Conan
 
 # This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches:
-      - test
+on: push
 
 env:
   SINTEF_REFERENCE: "netcdf*"
@@ -59,12 +56,10 @@ jobs:
             -s compiler.version=${{ matrix.compiler_version }} \
             -s compiler.libcxx=libstdc++11 \
             -b missing -b outdated . sintef/stable
-
-
-            #- name: Conan upload
-            #  run: |
-            #    conan upload --all -c -r sintef ${SINTEF_REFERENCE} --retry 10 --force
-            #- name: Bintray info
-            #  run: |
-            #    python3 bintray.py ${SINTEF_CONAN_CLASS} \
-            #      ${CONAN_LOGIN_USERNAME_SINTEF} ${CONAN_PASSWORD_SINTEF}gg
+      - name: Conan upload
+        run: |
+          conan upload --all -c -r sintef ${SINTEF_REFERENCE} --retry 10 --force
+      - name: Bintray info
+        run: |
+          python3 bintray.py ${SINTEF_CONAN_CLASS} \
+          ${CONAN_LOGIN_USERNAME_SINTEF} ${CONAN_PASSWORD_SINTEF}
