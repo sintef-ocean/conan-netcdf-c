@@ -8,7 +8,7 @@ class NetcdfConan(ConanFile):
     author = "Jarle Ladstein jarle.ladstein@sintef.no"
     url = "https://github.com/Unidata/netcdf-c.git"
     description = "NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. NetCDF was developed and is maintained at Unidata. Unidata provides data and software tools for use in geoscience education and research. Unidata is part of the University Corporation for Atmospheric Research (UCAR) Community Programs (UCP). Unidata is funded primarily by the National Science Foundation."
-    #topics = ("<Put some tag here>", "<here>", "<and here>")
+    topics = ("conan", "netcdf", "netCDF", "netcdf-c", "data")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     source_subfolder = "netcdf-c"
