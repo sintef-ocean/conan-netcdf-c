@@ -1,7 +1,7 @@
-name: GCC Conan
+name: Clang Conan
 
 # This workflow is triggered on pushes to the repository.
-on: push
+on: [push]
 
 env:
   SINTEF_REFERENCE: "netcdf*"
@@ -13,47 +13,26 @@ env:
   CONAN_USE_ALWAYS_SHORT_PATHS: True
 
 jobs:
-  conan-with-gcc:
+  conan-with-clang:
     name: Conan
     runs-on: ${{ matrix.os }}
     env:
-      CC: gcc-${{ matrix.compiler_version }}
-      CXX: g++-${{ matrix.compiler_version }}
+      CC: clang-${{ matrix.compiler_version }}
+      CXX: clang++-${{ matrix.compiler_version }}
     strategy:
       fail-fast: false
       matrix:
-        compiler_version: [6, 7, 8, 9]
+        compiler_version: [8, 9, 10]
         build_type: [Debug, Release]
-        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
-        exclude:
-          - os: ubuntu-16.04
-            compiler_version: 7
-          - os: ubuntu-16.04
-            compiler_version: 8
-          - os: ubuntu-16.04
-            compiler_version: 9
-          - os: ubuntu-18.04
-            compiler_version: 6
-          - os: ubuntu-18.04
-            compiler_version: 9
-          - os: ubuntu-20.04
-            compiler_version: 6
-          - os: ubuntu-20.04
-            compiler_version: 7
-          - os: ubuntu-20.04
-            compiler_version: 8
+        os: [ubuntu-20.04]
     steps:
       - uses: actions/checkout@v2
       - name: Install prerequisites
         run: |
-          sudo pip3 install --upgrade setuptools pip jinja2
+          sudo pip3 install --upgrade setuptools pip
           sudo pip3 install conan requests
           sudo pip3 install conan_package_tools
-          if [ ${{ matrix.compiler_version }} -eq 6 ]; then
-              sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-              sudo apt-get update
-              sudo apt-get install gcc-6 g++-6 -y
-          fi
+          sudo apt-get install clang-tools-10
       - name: Configure Conan
         run: conan remote add sintef ${CONAN_UPLOAD} --insert 0
       - name: Conan create
@@ -69,3 +48,4 @@ jobs:
         run: |
           python3 bintray.py ${SINTEF_CONAN_CLASS} \
             ${CONAN_LOGIN_USERNAME_SINTEF} ${CONAN_PASSWORD_SINTEF}
+
