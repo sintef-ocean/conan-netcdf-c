@@ -57,7 +57,8 @@ The package is usually consumed using the `conan install` command or a *conanfil
 ## Package options
 
 Option | Default | Domain
----|---|---
+-------|---------|--------------
+fPIC   | True    | [True, False]
 
 ## Known recipe issues
 

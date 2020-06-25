@@ -11,11 +11,18 @@ class NetcdfConan(ConanFile):
     description = "NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. NetCDF was developed and is maintained at Unidata. Unidata provides data and software tools for use in geoscience education and research. Unidata is part of the University Corporation for Atmospheric Research (UCAR) Community Programs (UCP). Unidata is funded primarily by the National Science Foundation."
     topics = ("conan", "netcdf", "netCDF", "netcdf-c", "data")
     settings = "os", "compiler", "build_type", "arch"
+    options = { "fPIC": [True, False] }
+    default_options = { "fPIC": True }
     generators = ["cmake_paths", "cmake_find_package"]
     source_subfolder = "netcdf-c"
     exports = ["patches/*"]
 
     _cmake = None
+
+    def configure(self):
+        del self.settings.compiler.libcxx
+        if self.settings.os == 'Windows':
+            del self.options.fPIC
 
     def requirements(self):
         self.requires("hdf5/1.8.21@sintef/stable")
@@ -40,6 +47,8 @@ class NetcdfConan(ConanFile):
         #self._cmake.definitions["ENABLE_DYNAMIC_LOADING"] = True
         self._cmake.definitions["BUILD_SHARED_LIBS"] = False
         #self._cmake.definitions[""] =
+        if self.settings.os != 'Windows':
+            self._cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = self.options.fPIC
         self._cmake.configure(source_folder=self.source_subfolder)
         return self._cmake
 
@@ -66,6 +75,3 @@ class NetcdfConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["netcdf"]
-
-    def configure(self):
-        del self.settings.compiler.libcxx
