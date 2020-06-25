@@ -21,7 +21,7 @@ class NetcdfConan(ConanFile):
 
     def configure(self):
         del self.settings.compiler.libcxx
-        if self.settings.compiler == 'Visual Studio':
+        if self.settings.os == 'Windows':
             del self.options.fPIC
 
     def requirements(self):
@@ -47,7 +47,8 @@ class NetcdfConan(ConanFile):
         #self._cmake.definitions["ENABLE_DYNAMIC_LOADING"] = True
         self._cmake.definitions["BUILD_SHARED_LIBS"] = False
         #self._cmake.definitions[""] =
-        self._cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = self.options.fPIC
+        if self.settings.os != 'Windows':
+            self._cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = self.options.fPIC
         self._cmake.configure(source_folder=self.source_subfolder)
         return self._cmake
 
