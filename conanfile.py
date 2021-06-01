@@ -25,7 +25,7 @@ class NetcdfConan(ConanFile):
             del self.options.fPIC
 
     def requirements(self):
-        self.requires("hdf5/1.8.21@")
+        self.requires("hdf5/1.8.21@sintef/stable")
 
     def source(self):
         self.run("git clone --no-checkout https://github.com/Unidata/netcdf-c.git {0}".format(self.source_subfolder))
