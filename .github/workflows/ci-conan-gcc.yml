@@ -33,11 +33,6 @@ jobs:
           sudo pip3 install --upgrade conan
       - name: Configure Conan
         run: conan remote add sintef ${CONAN_UPLOAD} --insert 0
-      - name: Remove old conan-center
-        if: ${{ matrix.compiler_version == 63 }}
-        run: |
-          conan remote remove conan-center
-          conan remote add --insert 0 conancenter https://center.conan.io
       - name: Conan create
         run: |
           conan create -s build_type=${{ matrix.build_type }} \
