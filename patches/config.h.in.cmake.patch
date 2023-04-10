@@ -1,5 +1,5 @@
---- netcdf-c/config.h.in.cmake	2020-06-18 13:45:29.734651800 +0200
-+++ netcdf-c/config.h.in.cmake.new	2020-06-19 09:33:44.404708800 +0200
+--- config.h.in.cmake	2020-06-18 13:45:29.734651800 +0200
++++ config.h.in.cmake.new	2020-06-19 09:33:44.404708800 +0200
 @@ -30,7 +30,9 @@
  #ifdef _WIN32
  	#ifndef strcasecmp

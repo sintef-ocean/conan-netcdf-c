@@ -1,5 +1,5 @@
---- netcdf-c-org/CMakeLists.txt	2020-06-19 10:13:15.584452298 +0200
-+++ netcdf-c/CMakeLists.txt	2020-06-19 11:41:10.440452298 +0200
+--- CMakeLists.txt	2020-06-19 10:13:15.584452298 +0200
++++ CMakeLists.txt	2020-06-19 11:41:10.440452298 +0200
 @@ -11,6 +11,7 @@
  
  #Project Name
@@ -8,7 +8,7 @@
  set(PACKAGE "netCDF" CACHE STRING "")
  #Project Version
  SET(netCDF_VERSION_MAJOR 4)
-@@ -50,10 +51,9 @@
+@@ -50,10 +51,8 @@
      SET(GLOBAL PROPERTY USE_FOLDERS ON)
  ENDIF()
  
@@ -17,8 +17,7 @@
 -SET (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/"
 -    CACHE INTERNAL "Location of our custom CMake modules.")
 +SET (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules/")
-+include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
- 
+
  # auto-configure style checks, other CMake modules.
  INCLUDE (${CMAKE_ROOT}/Modules/CheckLibraryExists.cmake)
 @@ -629,9 +629,10 @@

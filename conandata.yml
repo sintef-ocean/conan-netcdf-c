@@ -1,0 +1,10 @@
+sources:
+  "4.3.2-rc2-1921dc6687a5eea13936718d5a7aeb9bd04abf0b":
+    commit: "1921dc6687a5eea13936718d5a7aeb9bd04abf0b"
+    url: "https://github.com/Unidata/netcdf-c.git"
+
+patches:
+  "4.3.2-rc2-1921dc6687a5eea13936718d5a7aeb9bd04abf0b":
+    - patch_file: "patches/CMakeLists.txt.patch"
+    - patch_file: "patches/config.h.in.cmake.patch"
+    - patch_file: "patches/liblib_CMakeLists.txt.patch"
