@@ -1,5 +1,5 @@
 [![Linux GCC](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Linux%20GCC/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Linux+GCC")
-[![Linux Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Linux%20Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Linx+Clang")
+[![Linux Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Linux%20Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Linux+Clang")
 [![Windows MSVC](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Windows%20MSVC/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Windows+MSVC")
 [![Windows MSVC Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Windows%20MSVC%20Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Windows+MSVC+Clang")
 [![Macos Apple-Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Macos%20Apple-Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Macos+Apple-Clang")
