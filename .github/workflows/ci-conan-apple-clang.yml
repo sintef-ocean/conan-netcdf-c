@@ -24,6 +24,7 @@ jobs:
         profile: [apple_clang]
         compiler_version: [14]
         build_type: [Debug, Release]
+        build_shared: ["True", "False"]
     steps:
       - uses: actions/checkout@v3
       - name: Install prerequisites
@@ -46,6 +47,7 @@ jobs:
           conan create -s build_type=${{ matrix.build_type }} \
             -s compiler.version=${{ matrix.compiler_version }} \
             -s compiler.cppstd=${{ env.cppstd }} \
+            -o shared=${{ matrix.build_shared }} \
             -pr:b=${{ matrix.profile }} -pr:h=${{ matrix.profile }} \
             -b missing -b outdated -b ${{ env.package_name }}* \
             . ${{ env.USER_CHANNEL }}
