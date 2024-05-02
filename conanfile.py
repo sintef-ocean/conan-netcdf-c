@@ -17,9 +17,9 @@ class NetcdfConan(ConanFile):
     description = "NetCDF is a set of software libraries and self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data. NetCDF was developed and is maintained at Unidata. Unidata provides data and software tools for use in geoscience education and research. Unidata is part of the University Corporation for Atmospheric Research (UCAR) Community Programs (UCP). Unidata is funded primarily by the National Science Foundation."
     topics = ("conan", "netcdf", "netCDF", "netcdf-c", "data")
     settings = "os", "compiler", "build_type", "arch"
-    options = {"fPIC": [True, False]}
-    default_options = {"fPIC": True}
-    package_type = "static-library"  # Does have applications, but ok https://github.com/conan-io/conan/pull/12970
+    options = {"fPIC": [True, False], "shared": [True, False]}
+    default_options = {"fPIC": True, "shared": False}
+    package_type = "library"  # Does have applications, but ok https://github.com/conan-io/conan/pull/12970
 
     def export_sources(self):
         export_conandata_patches(self)
@@ -29,6 +29,9 @@ class NetcdfConan(ConanFile):
             del self.options.fPIC
 
     def configure(self):
+        if self.options.shared:
+            self.options.rm_safe("fPIC")
+        self.options["*"].shared = self.options.shared
         self.settings.rm_safe("compiler.libcxx")
         self.settings.rm_safe("compiler.cppstd")
         self.options["hdf5"].threadsafe = True
@@ -52,8 +55,6 @@ class NetcdfConan(ConanFile):
         tc.variables["ENABLE_DAP"] = False
         tc.variables["ENABLE_TESTS"] = False
         tc.variables["BUILD_UTILITIES"] = True
-        tc.variables["BUILD_SHARED_LIBS"] = False
-        #tc.variables["ENABLE_DYNAMIC_LOADING"] = True
         tc.generate()
         deps = CMakeDeps(self)
         deps.generate()
