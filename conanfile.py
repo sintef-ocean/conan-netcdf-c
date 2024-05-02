@@ -41,7 +41,7 @@ class NetcdfConan(ConanFile):
         cmake_layout(self, src_folder="src")
 
     def requirements(self):
-        self.requires("hdf5/1.8.21")
+        self.requires("hdf5/1.8.21", transitive_libs=True)
 
     def source(self):
         git = Git(self)
