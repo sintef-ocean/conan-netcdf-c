@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        conan: ["1.0", "2.0"]
+        conan: ["2.0"]
         profile: [apple_clang]
         compiler_version: [14]
         build_type: [Debug, Release]
