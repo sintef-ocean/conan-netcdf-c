@@ -32,7 +32,7 @@ class NetcdfConan(ConanFile):
         if self.options.shared:
             self.options.rm_safe("fPIC")
         self.options["*"].shared = self.options.shared
-        if self.settings["os"] == "Windows":
+        if self.settings.os == "Windows":
             self.options["hdf5/*"].shared = False
         self.settings.rm_safe("compiler.libcxx")
         self.settings.rm_safe("compiler.cppstd")
