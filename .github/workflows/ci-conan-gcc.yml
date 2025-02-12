@@ -8,7 +8,8 @@ env:
   CONAN_PASSWORD_SINTEF: ${{ secrets.CONAN_PASSWORD }}
   CONAN_LOGIN_USERNAME_SINTEF: ${{ secrets.CONAN_USER }}
   CONFIG_URL: https://github.com/sintef-ocean/conan-configs.git
-
+  DEBIAN_FRONTEND: noninteractive
+  TZ: Etc/UTC
 jobs:
   conan-with-gcc:
     name: Conan
