@@ -1,8 +1,5 @@
 [![Linux GCC](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Linux%20GCC/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Linux+GCC")
-[![Linux Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Linux%20Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Linux+Clang")
 [![Windows MSVC](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Windows%20MSVC/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Windows+MSVC")
-[![Windows MSVC Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Windows%20MSVC%20Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Windows+MSVC+Clang")
-[![Macos Apple-Clang](https://github.com/sintef-ocean/conan-netcdf-c/workflows/Macos%20Apple-Clang/badge.svg)](https://github.com/sintef-ocean/conan-netcdf-c/actions?query=workflow%3A"Macos+Apple-Clang")
 
 [Conan.io](https://conan.io) recipe for [netCDF](https://www.unidata.ucar.edu/software/netcdf).
 
@@ -11,7 +8,7 @@
 1. Add remote to conan's package [remotes](https://docs.conan.io/2/reference/commands/remote.html)
 
    ```bash
-   $ conan remote add sintef https://artifactory.smd.sintef.no/artifactory/api/conan/conan-local
+   $ conan remote add sintef https://package.smd.sintef.no
    ```
 
 2. Using [*conanfile.txt*](https://docs.conan.io/2/reference/conanfile_txt.html) and *cmake* in your project.
