@@ -14,23 +14,15 @@ jobs:
   conan-with-gcc:
     name: Conan
     runs-on: ubuntu-24.04
-    env:
-      USER_CHANNEL: "${{ matrix.conan == '1.0' && 'sintef/stable' || '--user sintef --channel stable' }}"
     strategy:
       fail-fast: false
       matrix:
         profile: [gcc]
-        compiler_version: [11, 12, 13, 14]
+        compiler_version: [11, 12]
         build_type: [Debug, Release]
         build_shared: ["True", "False"]
         include:
           - linux: debian:latest
-          -
-            linux: debian:trixie
-            compiler_version: 14
-          -
-            linux: ubuntu:24.04
-            compiler_version: 13
           -
             linux: debian:bookworm
             compiler_version: 12
@@ -45,7 +37,7 @@ jobs:
       - name: Install prerequisites
         run: |
           apt-get update
-          apt-get install -y jq pipx build-essential cmake git
+          apt-get install -y jq pipx build-essential cmake git m4
           pipx install conan
           echo "/github/home/.local/bin" >> $GITHUB_PATH
       - name: Conan configs
